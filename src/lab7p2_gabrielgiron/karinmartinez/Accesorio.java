@@ -13,7 +13,7 @@ public class Accesorio {
     
     private String Nombre;
     private int cantidad;
-    private long precio;
+    private int precio;
     private long ID;
     private Random R = new Random();
 

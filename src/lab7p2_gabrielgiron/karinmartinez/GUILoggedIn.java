@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package lab7p2_gabrielgiron.karinmartinez;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -11,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class GUILoggedIn extends javax.swing.JFrame {
     public String NameUser;
+    private AdministrarAccesorio AA = new AdministrarAccesorio("./Accesorio.txt");
     /**
      * Creates new form GUILoggedIn
      */
@@ -276,12 +280,18 @@ public class GUILoggedIn extends javax.swing.JFrame {
     }//GEN-LAST:event_NAccessorioTextActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String Nombre = NAccessorioText.getText();
-        int Cantidad =  Integer.parseInt(CantText.getText());
-        int Precio = Integer.parseInt(PText.getText());
-        Accesorio a = new Accesorio(Nombre,Cantidad,Precio);
-        JOptionPane.showMessageDialog(null, "Accesorio Creado Exitosamente");
+        try {
+            // TODO add your handling code here:
+            String Nombre = NAccessorioText.getText();
+            int Cantidad =  Integer.parseInt(CantText.getText());
+            int Precio = Integer.parseInt(PText.getText());
+            Accesorio a = new Accesorio(Nombre,Cantidad,Precio);
+            AA.getListaAccess().add(a);
+            AA.escribirArchivo();
+            JOptionPane.showMessageDialog(null, "Accesorio Creado Exitosamente");
+        } catch (IOException ex) {
+            Logger.getLogger(GUILoggedIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
