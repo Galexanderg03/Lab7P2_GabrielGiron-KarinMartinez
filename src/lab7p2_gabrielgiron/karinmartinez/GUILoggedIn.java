@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  * @author Galex
  */
 public class GUILoggedIn extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form GUILoggedIn
      */
@@ -230,6 +230,11 @@ public class GUILoggedIn extends javax.swing.JFrame {
         jTabbedPane1.addTab("Accesorios", jPanel4);
 
         jButton3.setText("Cerrar Sesion");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel12.setText("Administrador");
@@ -270,8 +275,14 @@ public class GUILoggedIn extends javax.swing.JFrame {
         String Nombre = NAccessorioText.getText();
         int Cantidad =  Integer.parseInt(CantText.getText());
         int Precio = Integer.parseInt(PText.getText());
-        
+        Accesorio a = new Accesorio(Nombre,Cantidad,Precio);
+        JOptionPane.showMessageDialog(null, "Accesorio Creado Exitosamente");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
