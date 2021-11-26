@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -25,6 +26,15 @@ public class GUIComprador extends javax.swing.JFrame {
      */
     public GUIComprador() {
         initComponents();
+        ArrayList <Accesorio> id = new ArrayList();
+        ArrayList <Accesorio> nombre = new ArrayList();
+        ArrayList <Accesorio> precio = new ArrayList();
+        ArrayList <Accesorio> cantidad = new ArrayList();
+        ArrayList <Accesorio> inventario = new ArrayList();
+        inventario=f.getAccesorios();
+        for (int i =0; i<inventario.size();i++){
+            matriz [i][0]=inventario.get(i).getID();
+        }
     }
 
     /**
@@ -94,8 +104,8 @@ public class GUIComprador extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
