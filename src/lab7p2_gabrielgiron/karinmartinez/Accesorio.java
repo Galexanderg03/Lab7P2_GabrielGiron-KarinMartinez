@@ -13,7 +13,7 @@ public class Accesorio {
     
     private String Nombre;
     private int cantidad;
-    private int precio;
+    private long precio;
     private long ID;
     private Random R = new Random();
 
@@ -40,7 +40,7 @@ public class Accesorio {
         this.cantidad = cantidad;
     }
 
-    public int getPrecio() {
+    public long getPrecio() {
         return precio;
     }
 

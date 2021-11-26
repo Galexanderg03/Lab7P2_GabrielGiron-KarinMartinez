@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  * @author Galex
  */
 public class GUILoggedIn extends javax.swing.JFrame {
-    
+    private String NameUser;
     /**
      * Creates new form GUILoggedIn
      */
