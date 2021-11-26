@@ -129,7 +129,6 @@ public class sesion extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         ArrayList <Usuarios> usuarios =new ArrayList();
-        
         GUIComprador a =new GUIComprador();
         GUILoggedIn b = new GUILoggedIn();
         String usuario1,contra1;
