@@ -1,9 +1,12 @@
 
 package lab7p2_gabrielgiron.karinmartinez;
 
+import java.util.ArrayList;
+
 public class Usuarios {
     public String nombre,usuario, contraseña,tipo;
     public int edad;
+    private ArrayList<Accesorio> Accesorios = new ArrayList();
 
     public Usuarios() {
     }
