@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  * @author Galex
  */
 public class GUILoggedIn extends javax.swing.JFrame {
-
+    private String NameUser;
     /**
      * Creates new form GUILoggedIn
      */
@@ -38,7 +38,7 @@ public class GUILoggedIn extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        IDAccesorio = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -118,7 +118,12 @@ public class GUILoggedIn extends javax.swing.JFrame {
 
         jLabel4.setText("ID del Accesorio");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        IDAccesorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        IDAccesorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDAccesorioActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Cantidad");
 
@@ -136,7 +141,7 @@ public class GUILoggedIn extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jTextField4)
-                    .addComponent(jComboBox1, 0, 146, Short.MAX_VALUE))
+                    .addComponent(IDAccesorio, 0, 146, Short.MAX_VALUE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -155,7 +160,7 @@ public class GUILoggedIn extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IDAccesorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -230,6 +235,11 @@ public class GUILoggedIn extends javax.swing.JFrame {
         jTabbedPane1.addTab("Accesorios", jPanel4);
 
         jButton3.setText("Cerrar Sesion");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel12.setText("Administrador");
@@ -242,8 +252,8 @@ public class GUILoggedIn extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -268,10 +278,22 @@ public class GUILoggedIn extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String Nombre = NAccessorioText.getText();
-        String Cantidad = CantText.getText();
-        String Precio = PText.getText();
-        
+        int Cantidad =  Integer.parseInt(CantText.getText());
+        int Precio = Integer.parseInt(PText.getText());
+        Accesorio a = new Accesorio(Nombre,Cantidad,Precio);
+        JOptionPane.showMessageDialog(null, "Accesorio Creado Exitosamente");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        sesion S = new sesion();
+        this.setVisible(false);
+        S.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void IDAccesorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDAccesorioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDAccesorioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,13 +332,13 @@ public class GUILoggedIn extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CantText;
+    private javax.swing.JComboBox<String> IDAccesorio;
     private javax.swing.JTextField NAccessorioText;
     private javax.swing.JTextField PText;
     private javax.swing.JTable TablaAdmin;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;

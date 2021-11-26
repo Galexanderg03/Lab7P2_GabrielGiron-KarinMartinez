@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class Basededatos {
     public ArrayList <Usuarios> usuario = new ArrayList();
-    public ArrayList <Accesorios> accesorios = new ArrayList();
+    public ArrayList <Accesorio> accesorios = new ArrayList();
     public int factura=0;
     
     public Basededatos() {
     }
 
-    public ArrayList<Usuarios> getAccesorios() {
+    public ArrayList<Accesorio> getAccesorios() {
         return accesorios;
     }
 
@@ -23,7 +23,7 @@ public class Basededatos {
         this.factura = factura;
     }
     
-    public void setAccesorios(ArrayList<Usuarios> accesorios) {
+    public void setAccesorios(ArrayList<Accesorio> accesorios) {
         this.accesorios = accesorios;
     }
     
