@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  * @author Galex
  */
 public class GUILoggedIn extends javax.swing.JFrame {
-    private String NameUser;
+    public String NameUser;
     /**
      * Creates new form GUILoggedIn
      */
@@ -242,7 +242,7 @@ public class GUILoggedIn extends javax.swing.JFrame {
         });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel12.setText("Administrador");
+        jLabel12.setText("Administrador: "+NameUser);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

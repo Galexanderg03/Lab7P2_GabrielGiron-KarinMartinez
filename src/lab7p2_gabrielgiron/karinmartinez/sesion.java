@@ -127,9 +127,8 @@ public class sesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        GUILoggedIn I = new GUILoggedIn();
         ArrayList <Usuarios> usuarios =new ArrayList();
-        
         GUIComprador a =new GUIComprador();
         GUILoggedIn b = new GUILoggedIn();
         String usuario1,contra1;
@@ -143,10 +142,12 @@ public class sesion extends javax.swing.JFrame {
             for (Usuarios usuario2 : usuarios){
                 if (usuario2.getUsuario().equals(usuario1) && usuario2.getContraseña().equals(contra1)){
                     if (usuario2.getTipo()== "Administrador"){
+                        I.NameUser = usuario1;
                         b.setVisible(true);
                         this.setVisible(false);
                         JOptionPane.showMessageDialog(null, "Ingresado exitosamente");
                     }else if (usuario2.getTipo()== "comprador"){
+                        I.NameUser = usuario1;
                         a.setVisible(true);
                         this.setVisible(false);
                         JOptionPane.showMessageDialog(null, "Ingresado exitosamente");
