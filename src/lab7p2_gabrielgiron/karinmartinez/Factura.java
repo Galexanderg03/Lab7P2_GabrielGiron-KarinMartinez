@@ -41,13 +41,19 @@ public class Factura {
     public void escribirArchivo() throws IOException {
         FileWriter fw = null;
         BufferedWriter bw = null;
+        long total =0;
+        double isv;
         try {
             fw = new FileWriter(archivo, false);
             bw = new BufferedWriter(fw);
             bw.write("Accesorios Nintendo\nFactura#"+f.getFactura()+"\nAccesorio\tCantidad\tPrecio(unidad)\n");
             for (Accesorio t : comprado) {
                 bw.write(t.getNombre()+"\t"+t.getCantidad()+"\t"+t.getPrecio());
+                total=total + t.getPrecio();
+                
             }
+            isv =total*0.15;
+            bw.write("\n\ttotal:"+total);
             bw.flush();
         } catch (Exception ex) {
         }

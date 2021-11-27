@@ -328,7 +328,7 @@ public class GUIComprador extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
     public Basededatos f =new Basededatos();
-    public Factura v =new Factura(path);
+    public Factura v =new Factura("./Factura.txt");
     ArrayList <Accesorio> comprado =new ArrayList();
 }
 
