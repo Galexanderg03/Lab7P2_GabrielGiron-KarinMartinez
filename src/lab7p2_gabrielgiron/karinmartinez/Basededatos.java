@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Basededatos {
     public ArrayList <Usuarios> usuario = new ArrayList();
     public ArrayList <Accesorio> accesorios = new ArrayList();
+    private String Ingresado;
     public int factura=0;
     
     public Basededatos() {
@@ -37,6 +38,14 @@ public class Basededatos {
 
     public void addUsuario(Usuarios usuario){ 
         this.usuario.add(usuario); 
+    }
+
+    public String getIngresado() {
+        return Ingresado;
+    }
+
+    public void setIngresado(String Ingresado) {
+        this.Ingresado = Ingresado;
     }
     
     @Override

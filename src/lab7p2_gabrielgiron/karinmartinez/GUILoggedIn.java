@@ -5,6 +5,7 @@
  */
 package lab7p2_gabrielgiron.karinmartinez;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -15,11 +16,14 @@ import javax.swing.JOptionPane;
 public class GUILoggedIn extends javax.swing.JFrame {
     public String NameUser;
     private AdministrarAccesorio AA = new AdministrarAccesorio("./Accesorio.txt");
+    private String[] NameAccess;
+    
     /**
      * Creates new form GUILoggedIn
      */
     public GUILoggedIn() {
-        initComponents();
+        initComponents();  
+       
     }
 
     /**
@@ -246,7 +250,7 @@ public class GUILoggedIn extends javax.swing.JFrame {
         });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel12.setText("Administrador: "+NameUser);
+        jLabel12.setText("Administrador: "+f.getIngresado());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -339,7 +343,13 @@ public class GUILoggedIn extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    
+    
+    private void NameAccesorios()
+    {
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CantText;
     private javax.swing.JComboBox<String> IDAccesorio;
@@ -368,4 +378,6 @@ public class GUILoggedIn extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
+    public Basededatos f =new Basededatos();
+    public sesion s = new sesion();
 }
