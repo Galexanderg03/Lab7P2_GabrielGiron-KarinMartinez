@@ -14,6 +14,7 @@ import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,15 +27,15 @@ public class GUIComprador extends javax.swing.JFrame {
      */
     public GUIComprador() {
         initComponents();
-        ArrayList <Accesorio> id = new ArrayList();
-        ArrayList <Accesorio> nombre = new ArrayList();
-        ArrayList <Accesorio> precio = new ArrayList();
-        ArrayList <Accesorio> cantidad = new ArrayList();
-        ArrayList <Accesorio> inventario = new ArrayList();
-        inventario=f.getAccesorios();
-        for (int i =0; i<inventario.size();i++){
-            matriz [i][0]=inventario.get(i).getID();
+        String datos []={"ID","Accesorios","Precio","Cantidad"};
+        Object data [][]=new Object [f.getAccesorios().size()][4];
+        for (int i=0; i<f.getAccesorios().size();i++){
+            data [i][0]= "hola"+i;
+            data [i][1]= "hola"+i;
+            data [i][2]= "hola"+i;
+            data [i][3]= "hola"+i;
         }
+        jTable1.setModel(new DefaultTableModel(data,datos));
     }
 
     /**
@@ -89,6 +90,11 @@ public class GUIComprador extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Comprar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -229,6 +235,29 @@ public class GUIComprador extends javax.swing.JFrame {
            }                     
         }//fin IF
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        DefaultTableModel tabla = new DefaultTableModel();
+        jTable1.setModel(tabla);
+        ArrayList <Accesorio> inventario = new ArrayList();
+        Object[] accesorios = new Object[4];
+        inventario=f.getAccesorios();
+        int i=0;
+        accesorios[0]= "43242";
+        accesorios[1]= "hola";
+        accesorios[2]= "232";
+        accesorios[3]= "2";
+        tabla.addRow(accesorios);
+        for (Accesorio accesorio: inventario){
+            accesorios[0]= inventario.get(i).getID();
+            accesorios[1]= inventario.get(i).getNombre();
+            accesorios[2]= inventario.get(i).getPrecio();
+            accesorios[3]= inventario.get(i).getCantidad();
+            i++;
+            tabla.addRow(accesorios);
+        }
+        jTable1.setModel(tabla);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
