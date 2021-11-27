@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package lab7p2_gabrielgiron.karinmartinez;
 
 import java.io.BufferedWriter;
@@ -12,25 +8,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author Galex
- */
-public class AdministradorUsuarios {
-    private ArrayList<Usuarios> ListaUsuarios = new ArrayList();
+public class Factura {
+    public Basededatos f =new Basededatos();
+    ArrayList <Accesorio> comprado =new ArrayList();
     private File archivo = null;
-    
-    public AdministradorUsuarios(String path) 
+    public Factura(String path) 
     {
         archivo = new File(path);
     }
 
-    public ArrayList<Usuarios> getListaAccess() {
-        return ListaUsuarios;
+    public ArrayList<Accesorio> getComprado() {
+        return comprado;
     }
 
-    public void setListaAccess(ArrayList<Usuarios> ListaUsuarios) {
-        this.ListaUsuarios = ListaUsuarios;
+    public void setComprado(ArrayList<Accesorio> comprado) {
+        this.comprado = comprado;
     }
 
     public File getArchivo() {
@@ -43,7 +35,7 @@ public class AdministradorUsuarios {
 
     @Override
     public String toString() {
-        return "AdministrarAccesorio{" + "ListaUsuario=" + ListaUsuarios + ", archivo=" + archivo + '}';
+        return "Factura{" + "comprado=" + comprado + ", archivo=" + archivo + '}';
     }
     
     public void escribirArchivo() throws IOException {
@@ -52,12 +44,9 @@ public class AdministradorUsuarios {
         try {
             fw = new FileWriter(archivo, false);
             bw = new BufferedWriter(fw);
-            for(Usuarios U: ListaUsuarios) {
-                bw.write(U.getNombre() + ";");
-                bw.write(U.getUsuario()+";");
-                bw.write(U.getContraseña() + ";");
-                bw.write(U.getEdad() + ";");
-                bw.write(U.getTipo()+";");
+            bw.write("Accesorios Nintendo\nFactura#"+f.getFactura()+"\nAccesorio\tCantidad\tPrecio(unidad)\n");
+            for (Accesorio t : comprado) {
+                bw.write(t.getNombre()+"\t"+t.getCantidad()+"\t"+t.getPrecio());
             }
             bw.flush();
         } catch (Exception ex) {
@@ -68,13 +57,13 @@ public class AdministradorUsuarios {
     
     public void cargarArchivo() {
         Scanner sc = null;
-        ListaUsuarios = new ArrayList();
+        comprado = new ArrayList();
         if (archivo.exists()) {
             try {
                 sc = new Scanner(archivo);
                 sc.useDelimiter(";");
                 while (sc.hasNext()) {
-                    ListaUsuarios.add(new Usuarios(sc.next(),sc.next(),sc.next(),sc.next(),sc.nextInt()));
+                    comprado.add(new Accesorio(sc.next(),sc.nextInt(),sc.nextInt()));
                 }
             } catch (Exception ex) {
             }

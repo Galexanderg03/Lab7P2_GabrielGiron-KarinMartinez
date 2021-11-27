@@ -11,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -76,6 +78,12 @@ public class GUIComprador extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTable3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTabbedPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane2MouseClicked(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -203,59 +211,36 @@ public class GUIComprador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-        
-        
-        
-        
-        
-        
-        
-        /**JFileChooser jfc = new JFileChooser();
-        FileNameExtensionFilter filtro = 
-                    new FileNameExtensionFilter(
-                            "Archivos de Texto", "txt");
-         jfc.addChoosableFileFilter(filtro); 
-        int seleccion = jfc.showSaveDialog(this);        
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-             try {
-                 
-                  File fichero=null;
-                if (jfc.getFileFilter().getDescription().equals(
-                        "Archivos de Texto")) {
-                    fichero = 
-                        new File(jfc.getSelectedFile().getPath()+".txt");
-                }else{
-                    fichero = jfc.getSelectedFile();
-                }                             
-                fw = new FileWriter(fichero);
-                bw = new BufferedWriter(fw);
-                Date d = new Date();
-                int factura=f.getFactura()+1;
-                bw.write("Accesorios Nintendo\nFactura#"+factura+"\t 26/11/2021\nAccesorio\tCantidad\tPrecio");
-                bw.flush();         
-                JOptionPane.showMessageDialog(this, 
-                        "Archivo guardado exitosamente");  
-                
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                    bw.close();
-                    fw.close();
-                } catch (IOException ex) {
-           }                     
-        }//fin IF*/
+        AdministrarAccesorio a = new AdministrarAccesorio("./Factura.txt");
+        try {
+            a.escribirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(GUIComprador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
         int seleccionado = jTable1.getSelectedRow();
         Accesorio adquirido;
-        adquirido.setID();
-        
+        long id =Long.parseLong(model.getValueAt(seleccionado, 0).toString());
+        String nombre = model.getValueAt(seleccionado, 1).toString();
+        int precio = Integer.parseInt(model.getValueAt(seleccionado, 2).toString());
+        int cantidad = Integer.parseInt(model.getValueAt(seleccionado, 3).toString());
+        adquirido=(new Accesorio(nombre, cantidad, precio));
+        comprado.add(adquirido);
+        ArrayList <Usuarios> usuarios =new ArrayList();
+        usuarios= f.getUsuario();
+        int i =0;
+        for (Usuarios usuario2 : usuarios)
+        {
+            if (usuario2.getUsuario().equals(f.getIngresado())){
+
+            }else{
+                i++;
+            }
+        }
+        f.usuario.get(i).addaccesorio(adquirido);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -264,6 +249,10 @@ public class GUIComprador extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
+        
+    }//GEN-LAST:event_jTabbedPane2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -299,6 +288,29 @@ public class GUIComprador extends javax.swing.JFrame {
             }
         });
     }
+    public void escribirArchivo() {
+        File archivo =null;
+        FileWriter canal = null;
+        BufferedWriter ram =null;
+        try{
+            archivo =new File("d:/factura.txt");
+            canal =new FileWriter(archivo,false);
+            ram =new BufferedWriter (canal);
+            ram.write("Accesorios Nintendo\nFactura#"+f.getFactura()+"\nAccesorio\tCantidad\tPrecio(unidad)\n");
+            for (Accesorio t: comprado){
+                ram.write(t.getNombre()+"\t"+t.getCantidad()+"\t"+t.getPrecio());
+            }
+            ram.flush();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            ram.close();
+            canal.close();
+        } catch (IOException ex) {
+            
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
@@ -316,5 +328,7 @@ public class GUIComprador extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
     public Basededatos f =new Basededatos();
+    public Factura v =new Factura(path);
+    ArrayList <Accesorio> comprado =new ArrayList();
 }
 
