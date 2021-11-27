@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Usuarios {
     public String nombre,usuario, contraseña,tipo;
     public int edad;
-    private ArrayList<Accesorio> Accesorios = new ArrayList();
+    public ArrayList<Accesorio> Accesorios = new ArrayList();
 
     public Usuarios() {
     }

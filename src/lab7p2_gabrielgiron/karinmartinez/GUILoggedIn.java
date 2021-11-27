@@ -60,7 +60,7 @@ public class GUILoggedIn extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaAdmin = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
+        LB_Admin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -249,8 +249,8 @@ public class GUILoggedIn extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel12.setText("Administrador: "+f.getIngresado());
+        LB_Admin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        LB_Admin.setText("Administrador: "+f.getIngresado());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -261,14 +261,14 @@ public class GUILoggedIn extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LB_Admin, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LB_Admin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -343,16 +343,15 @@ public class GUILoggedIn extends javax.swing.JFrame {
             }
         });
     }
-    
-    
-    
-    private void NameAccesorios()
+
+    public void setNombre()
     {
-        
+        LB_Admin.setText("Administrador: "+f.getIngresado());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CantText;
     private javax.swing.JComboBox<String> IDAccesorio;
+    private javax.swing.JLabel LB_Admin;
     private javax.swing.JTextField NAccessorioText;
     private javax.swing.JTextField PText;
     private javax.swing.JTable TablaAdmin;
@@ -361,7 +360,6 @@ public class GUILoggedIn extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
