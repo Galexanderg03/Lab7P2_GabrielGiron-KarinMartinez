@@ -253,6 +253,8 @@ public class GUIComprador extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
         int seleccionado = jTable1.getSelectedRow();
+        Accesorio adquirido;
+        adquirido.setID();
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
