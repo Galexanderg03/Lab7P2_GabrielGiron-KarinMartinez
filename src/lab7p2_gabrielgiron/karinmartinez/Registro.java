@@ -166,7 +166,8 @@ public class Registro extends javax.swing.JFrame {
         }
         else
         {
-            for (Usuarios usuario2 : usuarios){
+            for (Usuarios usuario2 : usuarios)
+            {
                 if (usuario2.getUsuario().equals(usuario)){
                     JOptionPane.showMessageDialog(null, "El nombre de usuario ya esta registrado");
                 }else{
