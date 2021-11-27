@@ -61,7 +61,7 @@ public class Accesorio {
         int num;
         for(int i = 0; i < 8; i++)
         {
-            num = R.nextInt(9);
+            num = 1000+R.nextInt(2000);
             ID = ID + num;
         }
         return ID;

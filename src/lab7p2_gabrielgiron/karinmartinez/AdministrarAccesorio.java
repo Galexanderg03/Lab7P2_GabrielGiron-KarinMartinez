@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * @author Galex
  */
 public class AdministrarAccesorio {
-    private ArrayList<Accesorio> ListaAccess;
+    private ArrayList<Accesorio> ListaAccess = new ArrayList();
     private File archivo = null;
     
     public AdministrarAccesorio(String path) 
