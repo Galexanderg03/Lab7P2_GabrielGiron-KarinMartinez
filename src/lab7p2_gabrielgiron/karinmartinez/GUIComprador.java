@@ -28,12 +28,12 @@ public class GUIComprador extends javax.swing.JFrame {
     public GUIComprador() {
         initComponents();
         String datos []={"ID","Accesorios","Precio","Cantidad"};
-        Object data [][]=new Object [f.getAccesorios().size()][4];
-        for (int i=0; i<f.getAccesorios().size();i++){
-            data [i][0]= "hola"+i;
-            data [i][1]= "hola"+i;
-            data [i][2]= "hola"+i;
-            data [i][3]= "hola"+i;
+        Object data [][]=new Object [3][4];
+        for (int i=0; i<3;i++){
+            data [i][0]= 532432;
+            data [i][1]= "hola";
+            data [i][2]= 32;
+            data [i][3]= 4;
         }
         jTable1.setModel(new DefaultTableModel(data,datos));
     }
