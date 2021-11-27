@@ -74,7 +74,7 @@ public class AdministradorUsuarios {
                 sc = new Scanner(archivo);
                 sc.useDelimiter(";");
                 while (sc.hasNext()) {
-                    ListaUsuarios.add(new Accesorio(sc.next(),sc.nextInt(),sc.nextInt()));
+                    ListaUsuarios.add(new Usuarios(sc.next(),sc.next(),sc.next(),sc.next(),sc.nextInt()));
                 }
             } catch (Exception ex) {
             }
