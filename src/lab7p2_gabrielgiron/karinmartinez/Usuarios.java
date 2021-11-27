@@ -58,6 +58,10 @@ public class Usuarios {
     public void setEdad(int edad) {
         this.edad = edad;
     }
+    
+    public void addaccesorio(Accesorio accesorio){
+        Accesorios.add(accesorio);
+    }
 
     @Override
     public String toString() {

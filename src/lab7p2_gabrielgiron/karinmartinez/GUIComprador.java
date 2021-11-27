@@ -28,12 +28,13 @@ public class GUIComprador extends javax.swing.JFrame {
     public GUIComprador() {
         initComponents();
         String datos []={"ID","Accesorios","Precio","Cantidad"};
-        Object data [][]=new Object [3][4];
-        for (int i=0; i<3;i++){
-            data [i][0]= 532432;
-            data [i][1]= "hola";
-            data [i][2]= 32;
-            data [i][3]= 4;
+        Object data [][]=new Object [f.getAccesorios().size()][4];
+        ArrayList <Accesorio> inventario =new ArrayList();
+        for (int i=0; i<f.getAccesorios().size();i++){
+            data [i][0]= inventario.get(i).getID();
+            data [i][1]= inventario.get(i).getNombre();
+            data [i][2]= inventario.get(i).getPrecio();
+            data [i][3]= inventario.get(i).getCantidad();
         }
         jTable1.setModel(new DefaultTableModel(data,datos));
     }
@@ -87,6 +88,11 @@ public class GUIComprador extends javax.swing.JFrame {
                 "ID", "Accesorios", "Precio", "Cantidad"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Comprar");
@@ -197,7 +203,15 @@ public class GUIComprador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JFileChooser jfc = new JFileChooser();
+        
+        
+        
+        
+        
+        
+        
+        
+        /**JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter filtro = 
                     new FileNameExtensionFilter(
                             "Archivos de Texto", "txt");
@@ -233,31 +247,21 @@ public class GUIComprador extends javax.swing.JFrame {
                     fw.close();
                 } catch (IOException ex) {
            }                     
-        }//fin IF
+        }//fin IF*/
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        DefaultTableModel tabla = new DefaultTableModel();
-        jTable1.setModel(tabla);
-        ArrayList <Accesorio> inventario = new ArrayList();
-        Object[] accesorios = new Object[4];
-        inventario=f.getAccesorios();
-        int i=0;
-        accesorios[0]= "43242";
-        accesorios[1]= "hola";
-        accesorios[2]= "232";
-        accesorios[3]= "2";
-        tabla.addRow(accesorios);
-        for (Accesorio accesorio: inventario){
-            accesorios[0]= inventario.get(i).getID();
-            accesorios[1]= inventario.get(i).getNombre();
-            accesorios[2]= inventario.get(i).getPrecio();
-            accesorios[3]= inventario.get(i).getCantidad();
-            i++;
-            tabla.addRow(accesorios);
-        }
-        jTable1.setModel(tabla);
+        DefaultTableModel model =(DefaultTableModel)jTable1.getModel();
+        int seleccionado = jTable1.getSelectedRow();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        
+        
+        
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
