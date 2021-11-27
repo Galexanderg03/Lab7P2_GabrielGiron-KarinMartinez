@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author Home
  */
 public class sesion extends javax.swing.JFrame {
-    
+   
     /**
      * Creates new form sesion
      */
@@ -127,7 +127,7 @@ public class sesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        Registro m =new Registro();
         ArrayList <Usuarios> usuarios =new ArrayList();
         GUIComprador a =new GUIComprador();
         GUILoggedIn b = new GUILoggedIn();
@@ -142,19 +142,21 @@ public class sesion extends javax.swing.JFrame {
             for (Usuarios usuario2 : usuarios){
                 if (usuario2.getUsuario().equals(usuario1) && usuario2.getContraseña().equals(contra1)){
                     if (usuario2.getTipo()== "Administrador"){
-                        f.setIngresado(usuario1);
+                        f.setIngresado(usuario2);
                         b.f = f;
                         b.s = this;
                         b.setNombre();
                         b.setVisible(true);
+                        m.AU.cargarArchivo();
                         this.setVisible(false);
                         JOptionPane.showMessageDialog(null, "Ingresado exitosamente");
                     }else if (usuario2.getTipo()== "comprador"){
-                        f.setIngresado(usuario1);
+                        f.setIngresado(usuario2);
                         b.f = f;
                         b.s = this;
                         b.setNombre();
                         a.setVisible(true);
+                        m.AU.cargarArchivo();
                         this.setVisible(false);
                         JOptionPane.showMessageDialog(null, "Ingresado exitosamente");
                     }    

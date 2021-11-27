@@ -2,6 +2,7 @@
 package lab7p2_gabrielgiron.karinmartinez;
 
 import java.awt.Color;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Registro extends javax.swing.JFrame {
+     public AdministradorUsuarios AU = new AdministradorUsuarios("./Usuario.txt");
     public Registro() {
         initComponents();
     }
@@ -171,10 +173,17 @@ public class Registro extends javax.swing.JFrame {
                 if (usuario2.getUsuario().equals(usuario)){
                     JOptionPane.showMessageDialog(null, "El nombre de usuario ya esta registrado");
                 }else{
-                    f.addUsuario(new Usuarios(nombre,usuario,contraseña,tipo,edad));
-                    JOptionPane.showMessageDialog(null, "Registrado exitosamente");
-                    s.setVisible(true);
-                    this.setVisible(false);
+                    try {
+                        Usuarios U = new Usuarios(nombre,usuario,contraseña,tipo,edad);
+                        f.addUsuario(U);
+                        AU.getListaUsuarios().add(U);
+                        AU.escribirArchivo();
+                        JOptionPane.showMessageDialog(null, "Registrado exitosamente");
+                        s.setVisible(true);
+                        this.setVisible(false);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         } 

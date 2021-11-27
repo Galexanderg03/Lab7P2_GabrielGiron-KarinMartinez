@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 /**
  *
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
 public class GUILoggedIn extends javax.swing.JFrame {
     public String NameUser;
     private AdministrarAccesorio AA = new AdministrarAccesorio("./Accesorio.txt");
-    private String[] NameAccess;
+    private String[] ID;
     
     /**
      * Creates new form GUILoggedIn
@@ -53,6 +54,7 @@ public class GUILoggedIn extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
@@ -126,7 +128,6 @@ public class GUILoggedIn extends javax.swing.JFrame {
 
         jLabel4.setText("ID del Accesorio");
 
-        IDAccesorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         IDAccesorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IDAccesorioActionPerformed(evt);
@@ -139,17 +140,21 @@ public class GUILoggedIn extends javax.swing.JFrame {
 
         jLabel7.setText("Precio");
 
+        jButton4.setText("Modificar");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4)
-                    .addComponent(IDAccesorio, 0, 146, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addComponent(jTextField4)
+                        .addComponent(IDAccesorio, 0, 146, Short.MAX_VALUE)))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -178,7 +183,9 @@ public class GUILoggedIn extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jButton4)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modificar", jPanel2);
@@ -290,9 +297,19 @@ public class GUILoggedIn extends javax.swing.JFrame {
             int Cantidad =  Integer.parseInt(CantText.getText());
             int Precio = Integer.parseInt(PText.getText());
             Accesorio a = new Accesorio(Nombre,Cantidad,Precio);
+            Usuarios U = f.getIngresado();
+            for(int i = 0; i < 100; i++)
+            {
+                if(U == f.getUsuario().get(i))
+                {
+                    U.Accesorios.add(a);
+                    break;
+                }
+            }
             AA.getListaAccess().add(a);
             AA.escribirArchivo();
             JOptionPane.showMessageDialog(null, "Accesorio Creado Exitosamente");
+            setComboBox();
         } catch (IOException ex) {
             Logger.getLogger(GUILoggedIn.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -343,10 +360,20 @@ public class GUILoggedIn extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public void setComboBox()
+    {
+        for(int i = 0; i < f.getIngresado().Accesorios.size(); i++)
+        {
+            ID[i] = f.getIngresado().Accesorios.get(i).toString();
+        }
+        IDAccesorio = new javax.swing.JComboBox<>(ID);;
+    }
+    
     public void setNombre()
     {
-        LB_Admin.setText("Administrador: "+f.getIngresado());
+        LB_Admin.setText("Administrador: "+f.getIngresado().usuario);
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CantText;
@@ -358,6 +385,7 @@ public class GUILoggedIn extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

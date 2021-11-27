@@ -25,11 +25,11 @@ public class AdministradorUsuarios {
         archivo = new File(path);
     }
 
-    public ArrayList<Usuarios> getListaAccess() {
+    public ArrayList<Usuarios> getListaUsuarios() {
         return ListaUsuarios;
     }
 
-    public void setListaAccess(ArrayList<Usuarios> ListaUsuarios) {
+    public void setListaUsuarios(ArrayList<Usuarios> ListaUsuarios) {
         this.ListaUsuarios = ListaUsuarios;
     }
 

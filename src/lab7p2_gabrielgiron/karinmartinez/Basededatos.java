@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Basededatos {
     public ArrayList <Usuarios> usuario = new ArrayList();
     public ArrayList <Accesorio> accesorios = new ArrayList();
-    private String Ingresado;
+    private Usuarios Ingresado;
     public int factura=0;
     
     public Basededatos() {
@@ -40,11 +40,11 @@ public class Basededatos {
         this.usuario.add(usuario); 
     }
 
-    public String getIngresado() {
+    public Usuarios getIngresado() {
         return Ingresado;
     }
 
-    public void setIngresado(String Ingresado) {
+    public void setIngresado(Usuarios Ingresado) {
         this.Ingresado = Ingresado;
     }
     

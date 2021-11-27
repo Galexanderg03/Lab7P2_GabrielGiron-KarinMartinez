@@ -69,6 +69,6 @@ public class Accesorio {
 
     @Override
     public String toString() {
-        return "Accesorio{" + "Nombre=" + Nombre + ", cantidad=" + cantidad + ", precio=" + precio + ", ID=" + ID + '}';
+        return "ID=" + ID + '}';
     }
 }
